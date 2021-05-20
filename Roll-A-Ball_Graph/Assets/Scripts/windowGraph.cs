@@ -5,12 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using CodeMonkey.Utils;
 
+/*
 public class windowGraph : MonoBehaviour
 {
     Rect windowRect = new Rect(20, 20, 120, 50);
     private RectTransform graphContainer;
     private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
+    private float lastCircleX;
+    private GameObject lastCircleGameObject = null;
     [SerializeField] private Sprite circleSprite;// takes in the circle sprite
 
     void OnGUI()
@@ -31,9 +34,10 @@ public class windowGraph : MonoBehaviour
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
 
-        List<int> valueList = new List<int>() { 5, 500, 240, 75, 30, 80, 120, 172, 100, 200, 250, 400, 350, 300, 250 };
-        showGraph(valueList);
+        List<int> valueList = new List<int>() { 5, 500, 240, 75, 30, 80, 120, 172, 100, 200, 250};
+        //showGraph(valueList);
     }
+
     private GameObject CreateCircle(Vector2 anchoredPosition)
     {
         GameObject gameObject = new GameObject("circle", typeof(Image));
@@ -66,11 +70,11 @@ public class windowGraph : MonoBehaviour
             }
             lastCircleGameObject = circleGameObject;
 
-            RectTransform labelX = Instantiate(labelTemplateX);
-            labelX.SetParent(graphContainer);
-            labelX.gameObject.SetActive(true);
-            labelX.anchoredPosition = new Vector2(xPosition, -20f);
-            labelX.GetComponent<Text>().text = i.ToString();
+            //RectTransform labelX = Instantiate(labelTemplateX);
+            //labelX.SetParent(graphContainer);
+            //labelX.gameObject.SetActive(true);
+            //labelX.anchoredPosition = new Vector2(xPosition, -20f);
+            //labelX.GetComponent<Text>().text = i.ToString();
         }
 
         int separatorCount = 10;
@@ -83,7 +87,6 @@ public class windowGraph : MonoBehaviour
             labelY.anchoredPosition = new Vector2(-7f, normalizedValue * graphHeight);
             labelY.GetComponent<Text>().text = Mathf.RoundToInt(normalizedValue * yMaximum).ToString();
         }
-
     }
     //creates the connections between the points on the graph, basically creates a rectangle between 2 points
     private void createDotConnection(Vector2 dotPositionA, Vector2 dotPositionB)
@@ -105,3 +108,4 @@ public class windowGraph : MonoBehaviour
     }
     
 }
+*/

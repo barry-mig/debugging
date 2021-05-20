@@ -34,8 +34,10 @@ public class PlayerController : MonoBehaviour
 
         movementX = movementVector.x;
         movementY = movementVector.y;
+
         DebugVariableScript.printVariable(movementX);
         DebugVariableScript.printVariable(movementX);
+        DebugVariableScript.AddPoint(movementY);
         //DebugVariable.printVariable(movementX);
         //DebugVariable.printVariable(movementY);
     }
