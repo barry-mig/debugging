@@ -13,9 +13,9 @@ public class DebugVariable : MonoBehaviour
     private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
     private float lastCircleX;
-    private float xSize = 10f;
-    private float yMaximum = 5f;
-    private float yMinimum = -5f;
+    private float xSize = 0.2f; //10f
+    private float yMaximum = 10f;
+    private float yMinimum = -10f;
 
     private GameObject lastCircleGameObject = null;
 
@@ -35,16 +35,17 @@ public class DebugVariable : MonoBehaviour
     // Update is called once per frame
     public void printVariable(float num)
     {
-        Debug.Log(num);
+        //Debug.Log(num);
     }
 
     public void AddPoint(float num)
     {
         float graphHeight = graphContainer.sizeDelta.y;// grabs the size of the graphContainer
+        Debug.Log(graphHeight);
         //float xSize = 10f; //size distance between each point on the x axis
         //float yMaximum = 20f;
         float xPosition = lastCircleX + xSize;
-        float yPosition = (num / yMaximum) * graphHeight; //if you receive yMaximum value it will be located exactly at the graphHeight
+        float yPosition = ((num - yMinimum) / (yMaximum - yMinimum)) * graphHeight; //if you receive yMaximum value it will be located exactly at the graphHeight
 
         GameObject circleGameObject = CreateCircle(new Vector2(xPosition, yPosition));
         if (lastCircleGameObject != null)
@@ -93,7 +94,7 @@ public class DebugVariable : MonoBehaviour
             labelX.GetComponent<Text>().text = i.ToString();
         }
         */
-        int separatorCount = 5;
+        int separatorCount = 10;
         for (int i = 0; i <= separatorCount; i++)
         {
             RectTransform labelY = Instantiate(labelTemplateY);
@@ -101,8 +102,7 @@ public class DebugVariable : MonoBehaviour
             labelY.gameObject.SetActive(true);
             float normalizedValue = i * 1f / separatorCount;
             labelY.anchoredPosition = new Vector2(-7f, normalizedValue * graphHeight);
-            //labelY.GetComponent<Text>().text = Mathf.RoundToInt((yMinimum + normalizedValue * (yMaximum - yMinimum))).ToString();
-            labelY.GetComponent<Text>().text = Mathf.RoundToInt(normalizedValue * yMaximum).ToString();
+            labelY.GetComponent<Text>().text = Mathf.RoundToInt((yMinimum + normalizedValue * (yMaximum - yMinimum))).ToString();
         }
 
     }

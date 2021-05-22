@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI varName;
+    public TextMeshProUGUI varValue;
     public GameObject winTextObject;
 
     private Rigidbody rb;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
+        varName.text = "Var: transform.position.x\nType: float\nObject: Player\nScript: PlayerController.cs";
         winTextObject.SetActive(false);
         DebugVariableScript = myDebugVariable.GetComponent<DebugVariable>();
     }
@@ -37,14 +40,21 @@ public class PlayerController : MonoBehaviour
 
         DebugVariableScript.printVariable(movementX);
         DebugVariableScript.printVariable(movementX);
-        DebugVariableScript.AddPoint(movementY);
+        //DebugVariableScript.AddPoint(transform.position.x);
+        //varValue.text = "Value: " + transform.position.x.ToString();
         //DebugVariable.printVariable(movementX);
         //DebugVariable.printVariable(movementY);
+    }
+
+    private void Update()
+    {
+        DebugVariableScript.AddPoint(transform.position.x); //was previously in OnMove
+        varValue.text = "Value: " + transform.position.x.ToString(); //was previously in OnMove
     }
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if(count >= 8)
+        if(count >= 9)
         {
             winTextObject.SetActive(true);
         }
