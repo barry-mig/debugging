@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
-        varName.text = "Var: transform.position.x\nType: float\nObject: Player\nScript: PlayerController.cs";
+        varName.text = "";
+        varValue.text = "";
+        //varName.text = "Var: count\nType: int\nObject: Player\nScript: PlayerController.cs\nLast Line Altered: 27";
         winTextObject.SetActive(false);
         DebugVariableScript = myDebugVariable.GetComponent<DebugVariable>();
     }
@@ -46,15 +48,24 @@ public class PlayerController : MonoBehaviour
         //DebugVariable.printVariable(movementY);
     }
 
+    /*
     private void Update()
-    {
-        DebugVariableScript.AddPoint(transform.position.x); //was previously in OnMove
-        varValue.text = "Value: " + transform.position.x.ToString(); //was previously in OnMove
+    {   
+        //transform.position.y
+        DebugVariableScript.AddPoint(count); //was previously in OnMove
+        //if (count == 1)
+        //{
+            //varName.text = "Var: count\nType: int\nObject: Player\nScript: PlayerController.cs\nLast Line Altered: 80";
+        //}
+        varValue.text = "Value: " + count.ToString(); //was previously in OnMove
     }
+    */
+
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
-        if(count >= 9)
+        countText.text = "Count: " + count.ToString(); //Bug: should add count.ToString()
+
+        if (count >= 9)
         {
             winTextObject.SetActive(true);
         }

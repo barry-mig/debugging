@@ -12,7 +12,7 @@ public class DebugVariable : MonoBehaviour
     private RectTransform graphContainer;
     private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
-    private float lastCircleX;
+    private float lastCircleX = 10f;
     private float xSize = 0.2f; //10f
     private float yMaximum = 10f;
     private float yMinimum = -10f;
